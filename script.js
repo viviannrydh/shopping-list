@@ -1,23 +1,28 @@
 let addInput=document.getElementById('add-input');
 let add=document.getElementById('add');
 let toDoInput=document.getElementById('to-do-input');
-let toDoContainer=document.getElementById("to-do-container")
-let toDoInputArray=Array.from(addInput);
+
+
 let changeButtons=document.getElementsByClassName('change');
 let deleteButtons=document.querySelectorAll('.delete');
 let doneButtons=document.querySelectorAll('.done');
 let doneInput=document.querySelector('#done-input')
+let i=0;
 
 
 
 // add text to the 'att göra' lists;
 add.addEventListener('click',()=>{
+let inputGroup=document.querySelectorAll('.input-row');
+
     if(addInput.value.length==0){
         alert('OPS! The input form is empty! :(')
     } else {
-        toDoInput.value=addInput.value;
+        inputGroup[i].firstElementChild.value=addInput.value;
         addInput.value='';
-        createNewInputBox();   
+        createNewInputBox();
+        i++;
+        
     }
 })
 
@@ -53,17 +58,18 @@ doneButtons[0].addEventListener('click',()=>{
 
 
 // this function is defined for creating new input groups, based on how many times the user add text.
-
+let toDoContainer=document.getElementById("to-do-container")
 function createNewInputBox(){
 
     let toDoBox=document.createElement('div');
-    toDoBox.className='input-group';
+    toDoBox.className='input-group input-row';
     toDoContainer.appendChild(toDoBox);
 
-    let newToDoInput=document.createElement('input');
-    newToDoInput.type='text';
-    newToDoInput.className="form-control";
-    toDoBox.appendChild(newToDoInput);
+    let toDoInput=document.createElement('input');
+    toDoInput.type='text';
+    toDoInput.className="form-control input-group";
+    toDoInput.value='';
+    toDoBox.appendChild(toDoInput);
 
     let changeButton=document.createElement("BUTTON")
      changeButton.innerHTML = "Ändra";  

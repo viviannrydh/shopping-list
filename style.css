@@ -11,6 +11,11 @@ ul{
    margin-top:0.5em;
 }
 
+.input-row{  
+    width:50%;
+    margin-top:0.5em;
+}
+
 input{
     margin-right:1em;
 }
